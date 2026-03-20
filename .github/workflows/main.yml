@@ -1,0 +1,19 @@
+name: My First DevOps Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build the Docker Image
+      run: docker build -t my-devops-app .
+
+    - name: Run Python Script Test
+      run: python3 file_project.py
